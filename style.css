@@ -193,10 +193,8 @@ header h1 {
     text-transform: uppercase;
     text-align: center;
     transition: all 0.4s ease;
-    /* Transizione per effetto hover */
 }
 
-/* Effetto Hover specifico per Hero Title */
 .hero-content h2:hover {
     color: #ffffff;
     text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
@@ -303,7 +301,7 @@ header h1 {
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
 }
 
-/* --- PORTFOLIO CAROUSEL --- */
+/* --- PORTFOLIO CAROUSEL (AGGIORNATO) --- */
 .portfolio-section {
     width: 100%;
     margin: 2rem 0;
@@ -342,29 +340,52 @@ li {
     justify-content: center;
     align-items: center;
     scroll-snap-align: start;
-    background: #111;
+
+    /* Modifiche per le immagini di sfondo */
+    background-color: #111;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
     color: #fff;
     border-right: 1px solid rgba(255, 255, 255, 0.05);
     position: relative;
     padding: 0 20px;
     box-sizing: border-box;
+    overflow: hidden;
 }
 
-li:nth-child(even) {
-    background: #0a0a0a;
+/* Overlay scuro sopra l'immagine */
+li::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    /* Scurisce l'immagine del 60% */
+    z-index: 1;
 }
 
 li h2 {
     font-size: 5rem;
     z-index: 2;
+    /* Sopra l'overlay */
+    position: relative;
     text-align: center;
 }
 
 .carousel-desc {
     margin-top: 20px;
-    color: #888;
+    color: #f0f0f0;
     text-align: center;
     font-size: 1.1rem;
+    z-index: 2;
+    /* Sopra l'overlay */
+    position: relative;
+    font-weight: 500;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .carousel-nav {
@@ -404,7 +425,6 @@ li h2 {
 /* STILE PER I PUNTI DEL CAROSELLO */
 .carousel-dots {
     display: none;
-    /* Nascosti di default su desktop */
     justify-content: center;
     gap: 10px;
     margin-top: 15px;
@@ -476,7 +496,6 @@ li h2 {
     opacity: 1;
 }
 
-/* OVERLAY AUTOMATICO PER MOBILE */
 .grid-item.active-mobile .overlay {
     opacity: 1;
 }
@@ -560,8 +579,6 @@ li h2 {
 }
 
 @media (max-width: 600px) {
-
-    /* Header aggiustamenti */
     header h1 {
         font-size: 2rem;
     }
@@ -572,7 +589,6 @@ li h2 {
         }
     }
 
-    /* Hero Banner - RIDOTTO */
     .hero-banner {
         height: 20rem;
     }
@@ -586,7 +602,6 @@ li h2 {
         font-size: 0.9rem;
     }
 
-    /* Content */
     .content h2 {
         font-size: 2rem;
     }
@@ -595,7 +610,6 @@ li h2 {
         font-size: 1rem;
     }
 
-    /* Carousel */
     ul {
         height: 400px;
     }
@@ -604,12 +618,10 @@ li h2 {
         font-size: 2.5rem;
     }
 
-    /* Nascondi navigazione a frecce su mobile */
     .carousel-nav {
         display: none !important;
     }
 
-    /* Mostra i punti su mobile */
     .carousel-dots {
         display: flex;
     }
@@ -618,7 +630,6 @@ li h2 {
         padding-bottom: 3rem;
     }
 
-    /* Grid */
     .grid-container {
         grid-template-columns: 1fr;
         gap: 15px;
@@ -629,7 +640,6 @@ li h2 {
         height: 250px;
     }
 
-    /* Links - MODIFICATO PER ALLINEAMENTO CENTRALE */
     .links-container {
         flex-direction: column;
         gap: 15px;
